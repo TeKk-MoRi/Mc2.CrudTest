@@ -1,5 +1,8 @@
 using Mc2.CrudTest.Datalayer.Context;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,11 @@ builder.Services.AddSwaggerGen();
 #region Context
 builder.Services.AddDbContext<CrudTestContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"), providerOptions => providerOptions.EnableRetryOnFailure()));
+#endregion
+
+#region Mediator
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Mc2CrudTest.Application.StartUp).Assembly));
+
 #endregion
 
 var app = builder.Build();

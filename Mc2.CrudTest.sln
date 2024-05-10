@@ -13,9 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.AcceptanceTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Domain", "Mc2.CrudTest.Domain\Mc2.CrudTest.Domain.csproj", "{9E32F4CB-885C-4615-9129-B2E4F2CCDB54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.Datalayer", "Mc2.CrudTest.Datalayer\Mc2.CrudTest.Datalayer.csproj", "{7B61A0EB-7425-4BCC-A6ED-33F49AFB8E8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Datalayer", "Mc2.CrudTest.Datalayer\Mc2.CrudTest.Datalayer.csproj", "{7B61A0EB-7425-4BCC-A6ED-33F49AFB8E8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.Presentation.API", "Mc2.CrudTest.Presentation.API\Mc2.CrudTest.Presentation.API.csproj", "{F1C635C7-A2DE-458A-96B1-14BB0F734526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mc2.CrudTest.Presentation.API", "Mc2.CrudTest.Presentation.API\Mc2.CrudTest.Presentation.API.csproj", "{F1C635C7-A2DE-458A-96B1-14BB0F734526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2CrudTest.Application", "Mc2CrudTest.Application\Mc2CrudTest.Application.csproj", "{D74AD35B-232A-4244-942D-D5B3F75B7B9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mc2.CrudTest.Common", "Mc2.CrudTest.Common\Mc2.CrudTest.Common.csproj", "{3D278F0F-3B3C-49CC-8CD1-370E3AE37871}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{F1C635C7-A2DE-458A-96B1-14BB0F734526}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1C635C7-A2DE-458A-96B1-14BB0F734526}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1C635C7-A2DE-458A-96B1-14BB0F734526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74AD35B-232A-4244-942D-D5B3F75B7B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74AD35B-232A-4244-942D-D5B3F75B7B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74AD35B-232A-4244-942D-D5B3F75B7B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74AD35B-232A-4244-942D-D5B3F75B7B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D278F0F-3B3C-49CC-8CD1-370E3AE37871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D278F0F-3B3C-49CC-8CD1-370E3AE37871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D278F0F-3B3C-49CC-8CD1-370E3AE37871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D278F0F-3B3C-49CC-8CD1-370E3AE37871}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
