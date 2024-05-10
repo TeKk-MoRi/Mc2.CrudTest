@@ -18,6 +18,10 @@ builder.Services.AddDbContext<CrudTestContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr"), providerOptions => providerOptions.EnableRetryOnFailure()));
 #endregion
 
+
+#region IoC
+Mc2CrudTest.Application.StartUp.Start(builder.Services);
+#endregion
 #region Mediator
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Mc2CrudTest.Application.StartUp).Assembly));
 
