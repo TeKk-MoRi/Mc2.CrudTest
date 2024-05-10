@@ -12,7 +12,7 @@ namespace Mc2.CrudTest.Domain.Models
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         [Required]
         [StringLength(50)]
