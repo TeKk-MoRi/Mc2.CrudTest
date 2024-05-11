@@ -21,6 +21,7 @@ namespace Mc2.CrudTest.Service.Base
         T AddAndSave(T entity);
         Task UpdateAsync(T entity);
         void Update(T entity);
+        Task DeleteAndSaveAsync(T entity);
         Task<int> UpdateAndSaveAsync(T entity);
         int UpdateAndSave(T entity);
         public int SaveChanges();

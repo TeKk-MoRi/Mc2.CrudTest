@@ -120,6 +120,12 @@ namespace Mc2.CrudTest.Service.Base
             _dbContext.Update(entity);
             return _dbContext.SaveChanges();
         }
+
+        public async Task DeleteAndSaveAsync(T entity)
+        {
+            _dbContext.Remove(entity);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 
     public class BaseService<T> : BaseService<T, int>

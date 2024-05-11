@@ -23,6 +23,7 @@ namespace Mc2CrudTest.Application
 
             services.AddTransient<IValidator<CreateCustomerCommand>, CreateCustomerValidation>();
             services.AddTransient<IValidator<UpdateCustomerCommand>, UpdateCustomerValidation>();
+            services.AddTransient<IValidator<DeleteCustomerCommand>, DeleteCustomerValidation>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 

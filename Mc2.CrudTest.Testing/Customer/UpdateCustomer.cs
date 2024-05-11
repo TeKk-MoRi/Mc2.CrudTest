@@ -35,7 +35,7 @@ namespace Mc2.CrudTest.Testing.Customer
 
         [Theory]
         [ClassData(typeof(UpdateCustomerRequestTest))]
-        public async Task CreateCustomer_WithValidData_ShouldSucceed(UpdateCustomerCommand request)
+        public async Task UpdateCustomer_WithValidData_ShouldSucceed(UpdateCustomerCommand request)
         {
             _service.Setup(x => x.UpdateAndSaveAsync(It.IsAny<Domain.Models.Customer>()))
                 .ReturnsAsync(GetSampleData);
@@ -49,7 +49,7 @@ namespace Mc2.CrudTest.Testing.Customer
 
         [Theory]
         [ClassData(typeof(UpdateCustomerRequestInvalidNoTest))]
-        public async Task CreateCustomer_WithInValidData_ShouldFail(UpdateCustomerCommand request)
+        public async Task UpdateCustomer_WithInValidData_ShouldFail(UpdateCustomerCommand request)
         {
             // Arrange
             var validators = new List<IValidator<UpdateCustomerCommand>>();

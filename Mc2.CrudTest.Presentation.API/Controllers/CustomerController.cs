@@ -26,5 +26,12 @@ namespace Mc2.CrudTest.Presentation.API.Controllers
             var res = await _mediator.Send(model);
             return Response(res);
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> Delete(DeleteCustomerCommand model)
+        {
+            var res = await _mediator.Send(model);
+            return Response(res);
+        }
     }
 }
