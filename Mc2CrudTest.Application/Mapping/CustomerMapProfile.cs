@@ -13,6 +13,7 @@ namespace Mc2CrudTest.Application.Mapping
         public CustomerMapProfile()
         {
             CreateMap<Mc2.CrudTest.Domain.Models.Customer, CreateCustomerRequest>().ReverseMap();
+            CreateMap<Mc2.CrudTest.Domain.Models.Customer, UpdateCustomerRequest>().ReverseMap();
         }
     }
 }

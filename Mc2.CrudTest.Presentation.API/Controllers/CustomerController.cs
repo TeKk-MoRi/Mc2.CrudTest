@@ -19,5 +19,12 @@ namespace Mc2.CrudTest.Presentation.API.Controllers
             var res = await _mediator.Send(model);
             return Response(res);
         }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCustomerCommand model)
+        {
+            var res = await _mediator.Send(model);
+            return Response(res);
+        }
     }
 }
