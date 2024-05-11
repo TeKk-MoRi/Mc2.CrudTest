@@ -2,6 +2,8 @@
 using Mc2CrudTest.Application.Commands.Customer;
 using Mc2CrudTest.Application.Commands.Validation;
 using Mc2CrudTest.Application.Handlers.Base;
+using Mc2CrudTest.Application.Queries.Customer;
+using Mc2CrudTest.Application.Queries.Validation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -24,6 +26,7 @@ namespace Mc2CrudTest.Application
             services.AddTransient<IValidator<CreateCustomerCommand>, CreateCustomerValidation>();
             services.AddTransient<IValidator<UpdateCustomerCommand>, UpdateCustomerValidation>();
             services.AddTransient<IValidator<DeleteCustomerCommand>, DeleteCustomerValidation>();
+            services.AddTransient<IValidator<GetCustomerByIdQuery>, GetCustomerByIdValidation>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 

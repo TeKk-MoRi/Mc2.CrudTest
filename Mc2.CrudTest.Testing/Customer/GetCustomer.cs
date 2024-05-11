@@ -6,6 +6,8 @@ using Mc2CrudTest.Application.Commands.Customer;
 using Mc2CrudTest.Application.Commands.Validation;
 using Mc2CrudTest.Application.DTOs.Customer;
 using Mc2CrudTest.Application.Handlers.Base;
+using Mc2CrudTest.Application.Queries.Customer;
+using Mc2CrudTest.Application.Queries.Validation;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -15,17 +17,17 @@ using System.Threading.Tasks;
 
 namespace Mc2.CrudTest.Testing.Customer
 {
-    public class DeleteCustomer
+    public class GetCustomer
     {
         private Mock<ICustomerService> _service;
         private IMapper _mapper;
-        public DeleteCustomer()
+        public GetCustomer()
         {
             _service = new Mock<ICustomerService>();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
-                mc.CreateMap<Mc2.CrudTest.Domain.Models.Customer, DeleteCustomerRequest>().ReverseMap();
+                mc.CreateMap<Mc2.CrudTest.Domain.Models.Customer, CustomerDto>().ReverseMap();
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
@@ -34,12 +36,13 @@ namespace Mc2.CrudTest.Testing.Customer
         }
 
         [Theory]
-        [ClassData(typeof(DeleteCustomerRequestTest))]
-        public async Task DeleteCustomer_WithValidData_ShouldSucceed(DeleteCustomerCommand request)
+        [ClassData(typeof(GetCustomerByIdRequestTest))]
+        public async Task GetCustomer_WithValidData_ShouldSucceed(GetCustomerByIdQuery request)
         {
-            _service.Setup(x => x.DeleteAndSaveAsync(It.IsAny<Domain.Models.Customer>()));
+            _service.Setup(x => x.GetByIdAsync(It.IsAny<long>()))
+             .ReturnsAsync(GetSampleData);
 
-            var handler = new Mc2CrudTest.Application.Handlers.Customer.DeleteCustomerHandler(_service.Object, _mapper);
+            var handler = new Mc2CrudTest.Application.Handlers.Customer.GetCustomerByIdHandler(_service.Object, _mapper);
             var res = await handler.Handle(request, CancellationToken.None);
 
             Assert.NotNull(res);
@@ -47,21 +50,22 @@ namespace Mc2.CrudTest.Testing.Customer
         }
 
         [Theory]
-        [ClassData(typeof(DeleteCustomerRequestInvalidIdTest))]
-        public async Task DeleteCustomer_WithInValidData_ShouldFail(DeleteCustomerCommand request)
+        [ClassData(typeof(GetCustomerByIdRequestInvalidIdTest))]
+        public async Task GetCustomer_WithInValidData_ShouldFail(GetCustomerByIdQuery request)
         {
             // Arrange
-            var validators = new List<IValidator<DeleteCustomerCommand>>();
+            var validators = new List<IValidator<GetCustomerByIdQuery>>();
 
-            var validator = new DeleteCustomerValidation();
+            var validator = new GetCustomerByIdValidation();
 
             validators.Add(validator);
 
-            _service.Setup(x => x.DeleteAndSaveAsync(It.IsAny<Domain.Models.Customer>()));
+            _service.Setup(x => x.GetByIdAsync(It.IsAny<long>()))
+                .ReturnsAsync(GetSampleData);
 
-            var handler = new Mc2CrudTest.Application.Handlers.Customer.DeleteCustomerHandler(_service.Object, _mapper);
+            var handler = new Mc2CrudTest.Application.Handlers.Customer.GetCustomerByIdHandler(_service.Object, _mapper);
 
-            var behavior = new ValidationBehaviour<DeleteCustomerCommand, DeleteCustomerResponse>(validators);
+            var behavior = new ValidationBehaviour<GetCustomerByIdQuery, GetCustomerByIdResponse>(validators);
 
 
             Func<Task> act = async () => await behavior.Handle(request, () => handler.Handle(request, CancellationToken.None), CancellationToken.None);
@@ -74,6 +78,7 @@ namespace Mc2.CrudTest.Testing.Customer
         {
             return new Domain.Models.Customer
             {
+                Id = 1,
                 FirstName = "John",
                 LastName = "Doe",
                 DateOfBirth = new DateTime(1990, 1, 1),
