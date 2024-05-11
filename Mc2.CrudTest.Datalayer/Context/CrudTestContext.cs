@@ -21,6 +21,8 @@ namespace Mc2.CrudTest.Datalayer.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

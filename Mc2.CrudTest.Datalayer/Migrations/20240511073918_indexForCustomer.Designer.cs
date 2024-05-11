@@ -4,6 +4,7 @@ using Mc2.CrudTest.Datalayer.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mc2.CrudTest.Datalayer.Migrations
 {
     [DbContext(typeof(CrudTestContext))]
-    partial class CrudTestContextModelSnapshot : ModelSnapshot
+    [Migration("20240511073918_indexForCustomer")]
+    partial class indexForCustomer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
