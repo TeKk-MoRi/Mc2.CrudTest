@@ -37,12 +37,15 @@ namespace Mc2.CrudTest.Testing.Customer
         [ClassData(typeof(DeleteCustomerRequestTest))]
         public async Task DeleteCustomer_WithValidData_ShouldSucceed(DeleteCustomerCommand request)
         {
+            _service.Setup(x => x.GetByIdAsync(It.IsAny<long>()))
+                .ReturnsAsync(GetSampleData);
+
             _service.Setup(x => x.DeleteAndSaveAsync(It.IsAny<Domain.Models.Customer>()));
 
             var handler = new Mc2CrudTest.Application.Handlers.Customer.DeleteCustomerHandler(_service.Object, _mapper);
             var res = await handler.Handle(request, CancellationToken.None);
 
-            Assert.NotNull(res);
+            //Assert.NotNull(res);
             Assert.True(res.IsSucceed);
         }
 

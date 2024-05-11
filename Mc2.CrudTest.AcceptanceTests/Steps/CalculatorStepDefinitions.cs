@@ -1,35 +1,41 @@
-﻿namespace Mc2.CrudTest.AcceptanceTests.Steps;
-
-[Binding]
-public sealed class CalculatorStepDefinitions
+﻿namespace Mc2.CrudTest.AcceptanceTests.Steps
 {
-    private readonly ScenarioContext _scenarioContext;
+    using TechTalk.SpecFlow;
+    using NUnit.Framework;
 
-    public CalculatorStepDefinitions(ScenarioContext scenarioContext)
+    [Binding]
+    public sealed class CalculatorStepDefinitions
     {
-        _scenarioContext = scenarioContext;
-    }
+        private readonly ScenarioContext _scenarioContext;
 
-    [Given("to be filled...")]
-    public void GivenTheFirstNumberIs(int number)
-    {
+        public CalculatorStepDefinitions(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
 
-        _scenarioContext.Pending();
-    }
+        [Given("the first number is (.*)")]
+        public void GivenTheFirstNumberIs(int number)
+        {
+            _scenarioContext.Add("FirstNumber", number);
+        }
 
-    [When("to be filled...")]
-    public void WhenTheTwoNumbersAreAdded()
-    {
-        //TODO: implement act (action) logic
+        [When("the two numbers are added")]
+        public void WhenTheTwoNumbersAreAdded()
+        {
+            int firstNumber = _scenarioContext.Get<int>("FirstNumber");
+            int secondNumber = _scenarioContext.Get<int>("SecondNumber");
 
-        _scenarioContext.Pending();
-    }
+            int result = firstNumber + secondNumber;
 
-    [Then("to be filled...")]
-    public void ThenTheResultShouldBe(int result)
-    {
-        //TODO: implement assert (verification) logic
+            _scenarioContext.Add("Result", result);
+        }
 
-        _scenarioContext.Pending();
+        [Then("the result should be (.*)")]
+        public void ThenTheResultShouldBe(int expectedResult)
+        {
+            int actualResult = _scenarioContext.Get<int>("Result");
+
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
