@@ -34,7 +34,7 @@ namespace Mc2.CrudTest.Presentation.API.Controllers
                 Email = "ss",
                 FirstName = "dd",
                 LastName = "d",
-                PhoneNumber = "dddddd"
+                PhoneNumber = "+14155552671"
             }));
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

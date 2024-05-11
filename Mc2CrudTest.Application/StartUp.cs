@@ -1,4 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Mc2CrudTest.Application.Commands.Customer;
+using Mc2CrudTest.Application.Commands.Validation;
+using Mc2CrudTest.Application.Handlers.Base;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +19,13 @@ namespace Mc2CrudTest.Application
             Mc2.CrudTest.Service.StartUp.Start(services);
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            services.AddTransient<IValidator<CreateCustomerCommand>, CreateCustomerValidation>();
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+
+
         }
     }
 }
